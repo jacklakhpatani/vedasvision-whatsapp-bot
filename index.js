@@ -5,7 +5,7 @@ app.use(express.json());
 
 const VERIFY_TOKEN = "vedasvision2024";
 const WHATSAPP_TOKEN = process.env.WHATSAPP_TOKEN;
-const CLAUDE_API_KEY = process.env.CLAUDE_API_KEY;
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 const PHONE_NUMBER_ID = process.env.PHONE_NUMBER_ID;
 
 const SYSTEM_PROMPT = `You are Jack Lakhpatani's AI assistant at Vedas Vision Accounting & Auditing LLC, Dubai, UAE. Jack is a Senior Compliance Advisor specializing in AML/CFT compliance, KYC audits, VAT returns, goAML/DPMSR reporting for UAE DNFBP clients in gold and jewellery sector. Reply professionally on Jack's behalf. Keep replies concise. For complex matters say: "Thank you for your message. Jack sir will personally review this and revert shortly."`;
@@ -26,24 +26,25 @@ app.post("/webhook", async (req, res) => {
     const from = message.from;
     const text = message.text.body;
 
-    const claudeRes = await axios.post(
-      "https://api.anthropic.com/v1/messages",
+    const openaiRes = await axios.post(
+      "https://api.openai.com/v1/chat/completions",
       {
-        model: "claude-sonnet-4-20250514",
+        model: "gpt-4",
         max_tokens: 500,
-        system: SYSTEM_PROMPT,
-        messages: [{ role: "user", content: text }]
+        messages: [
+          { role: "system", content: SYSTEM_PROMPT },
+          { role: "user", content: text }
+        ]
       },
       {
         headers: {
-          "x-api-key": CLAUDE_API_KEY,
-          "anthropic-version": "2023-06-01",
-          "content-type": "application/json"
+          "Authorization": `Bearer ${OPENAI_API_KEY}`,
+          "Content-Type": "application/json"
         }
       }
     );
 
-    const reply = claudeRes.data.content[0].text;
+    const reply = openaiRes.data.choices[0].message.content;
 
     await axios.post(
       `https://graph.facebook.com/v18.0/${PHONE_NUMBER_ID}/messages`,
