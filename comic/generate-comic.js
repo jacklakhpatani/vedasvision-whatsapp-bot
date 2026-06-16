@@ -9,16 +9,17 @@ if (!OPENAI_API_KEY) {
 }
 
 const STYLE =
-  "2D flat cartoon illustration, Indian comic book style, bold black outlines, " +
-  "bright saturated colors, simple clean background, expressive exaggerated facial " +
-  "emotions. Consistent character design across every panel: the Customer is a " +
-  "50-year-old Indian uncle with a thick grey mustache, wearing a white dhoti, a " +
-  "sleeveless baniyan (vest), and a checkered gamcha draped around his neck, talking " +
-  "on an old black rotary telephone. The Bijli Vibhag worker is a 40-45 year old " +
-  "Indian man wearing a khaki government uniform shirt, khaki pants, and a khaki cap. " +
-  "The panel includes one clear comic-style speech bubble with accurately spelled, " +
-  "legible text showing the speaking character's dialogue line, and nothing else " +
-  "written anywhere else in the image.";
+  "Photorealistic photograph, shot on a DSLR with natural soft indoor lighting, real " +
+  "human skin texture and pores, real fabric texture, candid documentary photo style, " +
+  "set in a modest Indian home. Not a cartoon, not an illustration, not a painting. " +
+  "Consistent characters across every photo: the Customer is a real 50-year-old Indian " +
+  "uncle with a thick grey mustache and greying hair, wearing a plain white dhoti, a " +
+  "sleeveless baniyan (vest), and a checkered red-and-white gamcha draped around his " +
+  "neck, talking on an old black rotary telephone. The Bijli Vibhag worker is a real " +
+  "40-45 year old Indian man wearing a khaki government uniform shirt, khaki pants, " +
+  "and a khaki cap. The photo includes one clear comic-style speech bubble overlay " +
+  "with accurately spelled, legible text showing the speaking character's dialogue " +
+  "line, and nothing else written anywhere else in the image.";
 
 const dialogue = [
   {
