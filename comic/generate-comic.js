@@ -9,17 +9,21 @@ if (!OPENAI_API_KEY) {
 }
 
 const STYLE =
-  "Photorealistic photograph, shot on a DSLR with natural soft indoor lighting, real " +
-  "human skin texture and pores, real fabric texture, candid documentary photo style, " +
-  "set in a modest Indian home. Not a cartoon, not an illustration, not a painting. " +
-  "Consistent characters across every photo: the Customer is a real 50-year-old Indian " +
-  "uncle with a thick grey mustache and greying hair, wearing a plain white dhoti, a " +
-  "sleeveless baniyan (vest), and a checkered red-and-white gamcha draped around his " +
-  "neck, talking on an old black rotary telephone. The Bijli Vibhag worker is a real " +
-  "40-45 year old Indian man wearing a khaki government uniform shirt, khaki pants, " +
-  "and a khaki cap. The photo includes one clear comic-style speech bubble overlay " +
-  "with accurately spelled, legible text showing the speaking character's dialogue " +
-  "line, and nothing else written anywhere else in the image.";
+  "Photorealistic photograph, shot on a DSLR, real human skin texture and pores, " +
+  "real fabric texture, candid documentary photo style, set in a modest Indian home. " +
+  "Not a cartoon, not an illustration, not a painting. It is evening time with heavy " +
+  "rain falling outside and a thick overcast cloudy grey sky visible through a window " +
+  "or doorway, dim moody evening light, visible raindrops and wet window glass, this " +
+  "same evening rainy overcast atmosphere applies on both the Customer's side and the " +
+  "Bijli Vibhag worker's side. Consistent characters across every photo: the Customer " +
+  "is a real 50-year-old Indian uncle with a thick grey mustache and greying hair, " +
+  "wearing a plain white dhoti, a sleeveless baniyan (vest), and a checkered " +
+  "red-and-white gamcha draped around his neck, talking on an old black rotary " +
+  "telephone. The Bijli Vibhag worker is a real 40-45 year old Indian man wearing a " +
+  "khaki government uniform shirt, khaki pants, and a khaki cap. The photo includes " +
+  "one clear comic-style speech bubble overlay with accurately spelled, legible text " +
+  "showing the speaking character's dialogue line, and nothing else written anywhere " +
+  "else in the image.";
 
 const dialogue = [
   {
@@ -27,9 +31,10 @@ const dialogue = [
     speaker: "Customer",
     line: "Hello",
     scene:
-      "the Customer sits on a wooden stool at home holding an old black rotary " +
-      "telephone receiver to his ear with his other hand on the phone base, greeting " +
-      "warmly. Only the Customer is visible in this panel."
+      "the Customer sits on a wooden stool at home next to a window showing heavy " +
+      "evening rain and cloudy sky, holding an old black rotary telephone receiver to " +
+      "his ear with his other hand on the phone base, greeting warmly. Only the " +
+      "Customer is visible in this panel."
   }
   // Further lines will be appended here one at a time as each panel gets approved.
 ];
@@ -44,7 +49,7 @@ async function generatePanel(panel) {
     {
       model: "gpt-image-1",
       prompt,
-      size: "1024x1024",
+      size: "1024x1536",
       quality: "high",
       n: 1
     },
